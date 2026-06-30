@@ -1,1 +1,2 @@
 # Project Planner Pro - Backend Application Package
+from .config import settings
