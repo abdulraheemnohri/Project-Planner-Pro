@@ -1,0 +1,28 @@
+{
+  "services": [
+    {
+      "name": "frontend",
+      "type": "node",
+      "buildCommand": "cd src/frontend && npm install && npm run build",
+      "startCommand": "cd src/frontend && npx serve -s dist -l 3000",
+      "staticFiles": {
+        "directory": "src/frontend/dist",
+        "publicPath": "/"
+      }
+    },
+    {
+      "name": "backend",
+      "type": "python",
+      "buildCommand": "cd src/backend && pip install -r requirements.txt",
+      "startCommand": "cd src/backend && uvicorn main:app --host 0.0.0.0 --port 8000"
+    },
+    {
+      "name": "postgres",
+      "type": "postgres"
+    },
+    {
+      "name": "redis",
+      "type": "redis"
+    }
+  ]
+}
