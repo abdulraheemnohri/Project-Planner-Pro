@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.glass {
+  @apply bg-white/10 backdrop-blur-lg rounded-xl border border-white/20;
+}
+
+.transition-smooth {
+  @apply transition-all duration-200 ease-in-out;
+}
