@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Rocket, Eye } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Sprints() {
   const [sprints] = useState([
@@ -25,15 +26,27 @@ export default function Sprints() {
           <div key={sprint.id} className="glass p-6 rounded-xl">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-semibold">{sprint.name}</h3>
+                <div className="flex items-center gap-2">
+                  <Rocket className="w-5 h-5" />
+                  <h3 className="font-semibold">{sprint.name}</h3>
+                </div>
                 <p className="text-sm text-muted-foreground">{sprint.goal}</p>
               </div>
               <span className="text-xs px-2 py-1 bg-muted rounded-full capitalize">
                 {sprint.status}
               </span>
             </div>
-            <div className="mt-4 text-sm text-muted-foreground">
-              Day {sprint.days}
+            <div className="mt-4 flex justify-between items-center">
+              <div className="text-sm text-muted-foreground">
+                Day {sprint.days}
+              </div>
+              <Link
+                to={"/sprints/" + sprint.id + "/board"}
+                className="flex items-center gap-1 text-sm text-primary hover:underline"
+              >
+                <Eye className="w-3 h-3" />
+                <span>View Board</span>
+              </Link>
             </div>
           </div>
         ))}
