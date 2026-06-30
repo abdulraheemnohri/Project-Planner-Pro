@@ -1,0 +1,26 @@
+# Project Planner Pro - Frontend Dockerfile
+
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+COPY src/frontend/package*.json ./
+
+RUN npm ci
+
+COPY src/frontend/ ./
+
+RUN npm run build
+
+FROM node:18-alpine AS production
+
+WORKDIR /app
+
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/package*.json ./
+
+RUN npm install --only=production
+
+EXPOSE 3000
+
+CMD ["npx", "serve", "-s", "dist", "-l", "3000"]

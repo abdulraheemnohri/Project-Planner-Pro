@@ -1,0 +1,26 @@
+# Project Planner Pro - Backend Dockerfile
+
+FROM python:3.10-slim AS builder
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y build-essential
+
+COPY src/backend/requirements.txt ./
+
+RUN pip install --user -r requirements.txt
+
+FROM python:3.10-slim AS production
+
+WORKDIR /app
+
+COPY --from=builder /root/.local /root/.local
+COPY --from=builder /app /app
+
+ENV PATH=/root/.local/bin:$PATH
+
+RUN apt-get update && apt-get install -y libpq5
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
