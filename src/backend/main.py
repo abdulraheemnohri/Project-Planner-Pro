@@ -7,6 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
+from app.routes import auth, users, projects, sprints, issues
 
 # Create FastAPI app
 app = FastAPI(
@@ -26,6 +27,13 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Include API routers
+app.include_router(users.router, prefix="/api/users", tags=["users"])
+app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
+app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
+app.include_router(sprints.router, prefix="/api/sprints", tags=["sprints"])
+app.include_router(issues.router, prefix="/api/issues", tags=["issues"])
 
 
 # Root endpoint
