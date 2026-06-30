@@ -7,7 +7,17 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
-from app.routes import auth, users, projects, sprints, issues
+from app.routes import (
+    auth,
+    users,
+    projects,
+    sprints,
+    issues,
+    comments,
+    milestones,
+    releases,
+    git,
+)
 
 # Create FastAPI app
 app = FastAPI(
@@ -34,6 +44,10 @@ app.include_router(auth.router, prefix="/api/auth", tags=["auth"])
 app.include_router(projects.router, prefix="/api/projects", tags=["projects"])
 app.include_router(sprints.router, prefix="/api/sprints", tags=["sprints"])
 app.include_router(issues.router, prefix="/api/issues", tags=["issues"])
+app.include_router(comments.router, prefix="/api/comments", tags=["comments"])
+app.include_router(milestones.router, prefix="/api/milestones", tags=["milestones"])
+app.include_router(releases.router, prefix="/api/releases", tags=["releases"])
+app.include_router(git.router, prefix="/api/git", tags=["git"])
 
 
 # Root endpoint
