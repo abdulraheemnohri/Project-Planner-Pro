@@ -1,0 +1,10 @@
+export { default as Dashboard } from "./Dashboard";
+export { default as Projects } from "./Projects";
+export { default as Sprints } from "./Sprints";
+export { default as Issues } from "./Issues";
+export { default as Roadmap } from "./Roadmap";
+export { default as Releases } from "./Releases";
+export { default as Analytics } from "./Analytics";
+export { default as Docs } from "./Docs";
+export { default as Git } from "./Git";
+export { default as Settings } from "./Settings";
