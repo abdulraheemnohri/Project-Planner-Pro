@@ -12,7 +12,7 @@ from .commit import Commit
 
 __all__ = [
     "User",
-    "Project", 
+    "Project",
     "Sprint",
     "Issue",
     "Comment",
