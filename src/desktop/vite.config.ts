@@ -1,0 +1,26 @@
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { tauri } from '@tauri-apps/vite-plugin'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    tauri(),
+  ],
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
+  clearScreen: false,
+  server: {
+    port: 1420,
+    strictPort: true,
+  },
+  envPrefix: ['VITE_', 'TAURI_'],
+  build: {
+    target: process.env.TAURI_PLATFORM == 'windows' ? 'chrome105' : 'safari15',
+    minify: !process.env.TAURI_DEBUG ? 'esbuild' : false,
+    sourcemap: !!process.env.TAURI_DEBUG,
+  },
+})

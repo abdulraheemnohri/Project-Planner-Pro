@@ -1,0 +1,93 @@
+{
+  "build": {
+    "beforeBuildCommand": "",
+    "beforeDevCommand": "",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "Project Planner Pro",
+    "version": "0.1.0",
+    "description": "Developer Productivity Platform",
+    "authors": ["Abdulraheem Nohari"],
+    "license": "MIT",
+    "repository": "https://github.com/abdulraheemnohri/Project-Planner-Pro",
+    "defaultReleaseChannel": "stable",
+    "identifier": "com.abdulraheemnohri.projectplannerpro"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "scope": [
+          {
+            "name": "Open URL",
+            "matchers": [
+              {
+                "validated": true,
+                "pattern": "^(https?://)?([\\w\\d\\.-]+)\\:?(\\d+)?([\\w\\d\\.-]*)?(*|[\\w\\d\\.-])?$"
+              }
+            ]
+          }
+        ]
+      },
+      "fs": {
+        "all": false,
+        "scope": []
+      },
+      "dialog": true,
+      "notification": true,
+      "http": {
+        "all": true,
+        "scope": []
+      },
+      "nft": {
+        "all": false,
+        "scope": []
+      },
+      "clipboard": {
+        "all": false,
+        "scope": []
+      },
+      "path": {
+        "all": false,
+        "scope": []
+      },
+      "os": {
+        "all": false,
+        "scope": []
+      },
+      "process": {
+        "all": false,
+        "scope": []
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "format": "esm",
+      "externalBinaries": []
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "title": "Project Planner Pro",
+        "width": 1200,
+        "height": 800,
+        "minWidth": 800,
+        "minHeight": 600,
+        "resizable": true,
+        "maximizable": true,
+        "minimizable": true,
+        "decorations": true,
+        "visible": false,
+        "center": true,
+        "url": "http://localhost:1420"
+      }
+    ]
+  }
+}
