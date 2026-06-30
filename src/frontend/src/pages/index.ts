@@ -1,6 +1,7 @@
 export { default as Dashboard } from "./Dashboard";
 export { default as Projects } from "./Projects";
 export { default as Sprints } from "./Sprints";
+export { default as SprintBoard } from "./SprintBoard";
 export { default as Issues } from "./Issues";
 export { default as Roadmap } from "./Roadmap";
 export { default as Releases } from "./Releases";
