@@ -17,6 +17,7 @@ from app.routes import (
     milestones,
     releases,
     git,
+    websocket,
 )
 
 # Create FastAPI app
@@ -48,6 +49,7 @@ app.include_router(comments.router, prefix="/api/comments", tags=["comments"])
 app.include_router(milestones.router, prefix="/api/milestones", tags=["milestones"])
 app.include_router(releases.router, prefix="/api/releases", tags=["releases"])
 app.include_router(git.router, prefix="/api/git", tags=["git"])
+app.include_router(websocket.router, prefix="/ws", tags=["websocket"])
 
 
 # Root endpoint
