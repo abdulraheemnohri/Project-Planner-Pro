@@ -2,8 +2,9 @@
 Issue Model
 """
 
-from sqlalchemy import Column, Integer, String, Text, ForeignKey, func
+from sqlalchemy import Column, Integer, String, Text, Date, ForeignKey, func, UniqueConstraint
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import DateTime
 from app.database import Base
 
 
@@ -34,9 +35,6 @@ class Issue(Base):
     assigned_to = relationship("User", foreign_keys=[assigned_to_id], back_populates="assigned_issues")
     parent_issue = relationship("Issue", remote_side=[id], back_populates="sub_issues")
     sub_issues = relationship("Issue", back_populates="parent_issue")
-    comments = relationship("Comment", back_populates="issue")
-    attachments = relationship("Attachment", back_populates="issue")
-    commits = relationship("Commit", back_populates="linked_issue")
 
     __table_args__ = (
         UniqueConstraint("project_id", "number", name="uq_project_issue_number"),

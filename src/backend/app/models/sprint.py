@@ -4,6 +4,7 @@ Sprint Model
 
 from sqlalchemy import Column, Integer, String, Text, Date, ForeignKey, func
 from sqlalchemy.orm import relationship
+from sqlalchemy.sql import DateTime
 from app.database import Base
 
 
